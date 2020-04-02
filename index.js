@@ -9,6 +9,35 @@
  for you to use if you need it!
  */
 
+const createEmployeeRecord = function(arr){
+    const [firstName, familyName, title, payPerHour] = arr
+    return {firstName: firstName,
+        familyName: familyName,
+        title: title,
+        payPerHour: payPerHour,
+        timeInEvents: [],
+        timeOutEvents: []
+    }
+}
+
+const createEmployeeRecords = function(arrOfArrays) {
+    return arrOfArrays.map(arr => createEmployeeRecord(arr))
+}
+
+function createTimeInEvent(timestmp) {
+    // const [date, time] = timestmp.split(' ')
+    // const arr = []
+    // arr.push({
+    //     type: 'TimeIn',
+    //     hour: parseInt(time),
+    //     date: date
+    // })
+    // return employeeRecordObject
+    return timestmp
+
+}
+
+
 let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
