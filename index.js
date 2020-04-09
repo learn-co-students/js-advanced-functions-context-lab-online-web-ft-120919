@@ -1,5 +1,59 @@
-/* Your Code Here */
+function createEmployeeRecord(array) {
+    return {
+        firstName: array[0],
+        familyName: array[1],
+        title: array[2],
+        payPerHour: array[3],
+        timeInEvents: [],
+        timeOutEvents: []
+    }
+};
 
+function createEmployeeRecords(employee) {
+    return employee.map(e => {
+        return createEmployeeRecord(e)
+    })
+};
+
+function createTimeInEvent(dateTime) {
+    this.timeInEvents.push({
+        type: "TimeIn",
+        hour: parseInt(dateTime.split(" ")[1]),
+        date: dateTime.split(" ")[0]
+    })
+    return this
+};
+
+function createTimeOutEvent(dateTime) {
+    this.timeOutEvents.push({
+        type: "TimeOut",
+        hour: parseInt(dateTime.split(" ")[1]),
+        date: dateTime.split(" ")[0]
+    });
+    return this
+};
+
+function hoursWorkedOnDate(date) {
+  const start = this.timeInEvents.find(t => t.date === date)
+  const end = this.timeOutEvents.find(t => t.date === date)
+    return (end.hour - start.hour) / 100
+};
+
+const wagesEarnedOnDate = function(date) {
+    return hoursWorkedOnDate.call(this, date) * this.payPerHour
+}
+
+const calculatePayroll = employees => {
+   return employees.map(employee => allWagesFor.call(employee)).reduce((acc, next) => {
+       return acc + next 
+   })
+}
+
+function findEmployeeByFirstName(srcArray, firstName) {
+    return srcArray.find(src => {
+        return src.firstName === firstName
+    });
+};
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
